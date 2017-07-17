@@ -1,7 +1,7 @@
-var fs = require('fs'); // filestream
-var server = require('http').createServer(); // native node server
-var io = require('socket.io')(server); //socket
-var ms = require('ms'); // timestamps
+const fs = require('fs'); // filestream
+const server = require('http').createServer(); // native node server
+const io = require('socket.io')(server); //socket
+const ms = require('ms'); // timestamps
 
 const dir = "logs/";
 
