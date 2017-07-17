@@ -5,6 +5,11 @@ const ms = require('ms'); // timestamps
 
 const dir = "logs/";
 
+// check if a folder named logs exists, and if not create one
+if (!fs.existsSync(dir)){
+    fs.mkdirSync(dir);
+}
+
 const Timestamp = function(started){
     let current = Date.now();
     return ms(current - started);
