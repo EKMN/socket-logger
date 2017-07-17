@@ -6,20 +6,29 @@ An attempt to see how much info you can poll from a client in realtime using a s
 
 ## How do I install it?
 
-Step one: **Clone it**
-```
+### *Step one:* Clone it
+```Bash
 git clone git@github.com:EKMN/socket-logger.git && cd socket-logger
 ```
-Step two: **Install dependencies through NPM**
-```
+### *Step two:* Install dependencies through NPM
+```Bash
 npm install
 ```
-Step three: **Run the server**
-```
+### *Step three:* Run the server
+```Bash
 npm start
 ```
-Bonus step: **clean the logs**
+### *Step four:* Open index.html
+**Windows**
+```bash
+start index.html
 ```
+**Mac/Linux**
+```bash
+open index.html
+```
+### *Bonus step:* Clean the logs
+```Bash
 npm run wipelogs
 ```
 
