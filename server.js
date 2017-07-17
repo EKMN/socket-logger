@@ -6,19 +6,19 @@ var ms = require('ms'); // timestamps
 const dir = "logs/";
 
 const Timestamp = function(started){
-    var current = Date.now();
+    let current = Date.now();
     return ms(current - started);
 }
 
 io.on('connection', function (socket) {
 
-  var started = Date.now();
-  var date = new Date();
+  let started = Date.now();
+  let date = new Date();
   date = `${date.getFullYear()}_${date.getHours()}_${date.getMinutes()}`;
 
   // start writing to a file when a new session starts
   console.log('session started');
-  var keystream = fs.createWriteStream(dir + date + '-keylog.txt', {
+  let keystream = fs.createWriteStream(dir + date + '-keylog.txt', {
     flags: 'a'
   });
 
@@ -37,7 +37,7 @@ io.on('connection', function (socket) {
   // on mousemove, write the contents to a file
   socket.on('mousemove', function (contents) {
     let timestamp = Timestamp(started);
-    var input = JSON.parse(contents);
+    let input = JSON.parse(contents);
     keystream.write(`[click] at ${timestamp}~ X:${input.x} Y: ${input.y} \r\n`);
   });
 
