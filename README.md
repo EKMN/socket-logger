@@ -1,24 +1,26 @@
 # socket-logger
-An attempt to see how much info you can poll from a client in realtime using a socket.io connection
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/EKMN/socket-logger/master/LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/EKMN/socket-logger.svg)](https://github.com/EKMN/socket-logger/stargazers)
+[![GitHub issues](https://img.shields.io/github/issues/EKMN/socket-logger.svg)](https://github.com/EKMN/socket-logger/issues)
 
 ## Okay... But what is it?
 **socket-logger** is key + clickgrabber that transmits the user interaction event logs to a remote server through a websocket
 
 ## How do I install it?
 
-### *Step one:* Clone it
+#### *Step one:* Clone it
 ```Bash
 git clone git@github.com:EKMN/socket-logger.git && cd socket-logger
 ```
-### *Step two:* Install dependencies through NPM
+#### *Step two:* Install dependencies through NPM
 ```Bash
 npm install
 ```
-### *Step three:* Run the server
+#### *Step three:* Run the server
 ```Bash
 npm start
 ```
-### *Step four:* Open index.html
+#### *Step four:* Open index.html
 **Windows**
 ```bash
 start index.html
@@ -27,7 +29,7 @@ start index.html
 ```bash
 open index.html
 ```
-### *Bonus step:* Clean the logs
+#### *Bonus step:* Clean the logs
 ```Bash
 npm run wipelogs
 ```
