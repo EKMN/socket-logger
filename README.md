@@ -2,7 +2,7 @@
 An attempt to see how much info you can poll from a client in realtime using a socket.io connection
 
 ## Okay... But what is it?
-"socket-logger" is key + clickgrabber that transmits the user interaction event logs to a remote server through a websocket
+**socket-logger** is key + clickgrabber that transmits the user interaction event logs to a remote server through a websocket
 
 ## How do I install it?
 
