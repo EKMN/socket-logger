@@ -27,4 +27,5 @@ npm run wipelogs
 - [X] A proof-of-concept barebones server + client implementation
 - [ ] An actual exportable module that has a constructor that takes some arguments, e.g. new SocketLogger(ip, port)
 - [ ] A plugin-like integration with a server framework, for example [Express](https://github.com/expressjs/express).
-- [ ] Client-side integration with a browser fingerprint framework like [Fingerprintjs](https://github.com/Valve/fingerprintjs2)
+- [ ] A client-side integration with a browser fingerprint framework like [Fingerprintjs](https://github.com/Valve/fingerprintjs2)
+- [ ] Testing 
